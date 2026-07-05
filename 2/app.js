@@ -849,18 +849,6 @@ ${money(t.amount)}
 
 </td>
 
-<td>
-
-${escapeHtml(t.remarks || "")}
-
-</td>
-
-<td>
-
-${escapeHtml(t.source || "")}
-
-</td>
-
 </tr>
 
 `;
@@ -1159,52 +1147,69 @@ function buildPieChart() {
     if (pieChart)
         pieChart.destroy();
 
-    let credit = 0;
-    let debit = 0;
+    const months = [...new Set(
+        transactions.map(t => monthKey(t.date))
+    )].sort();
 
-    transactions.forEach(t => {
+    const credit = [];
+    const debit = [];
+    const labels = [];
 
-        if (String(t.type).toLowerCase() === "credit")
-            credit += Number(t.amount) || 0;
+    months.forEach(month => {
 
-        if (String(t.type).toLowerCase() === "debit")
-            debit += Number(t.amount) || 0;
+        let c = 0;
+        let d = 0;
+
+        transactions.forEach(t => {
+
+            if (monthKey(t.date) !== month)
+                return;
+
+            if (t.type.toLowerCase() === "credit")
+                c += Number(t.amount);
+
+            else
+                d += Number(t.amount);
+
+        });
+
+        labels.push(monthLabel(month));
+        credit.push(c);
+        debit.push(d);
 
     });
 
     pieChart = new Chart(ctx, {
 
-        type: "pie",
+        type: "bar",
 
         data: {
 
-            labels: [
-
-                "Credit",
-
-                "Debit"
-
-            ],
+            labels: labels,
 
             datasets: [
 
                 {
 
-                    data: [
+                    label: "Credit",
 
-                        credit,
+                    data: credit,
 
-                        debit
+                    backgroundColor: "#16a34a",
 
-                    ],
+                    borderRadius: 8
 
-                    backgroundColor: [
+                },
 
-                        "#16a34a",
+                {
 
-                        "#dc2626"
+                    label: "Debit",
 
-                    ]
+                    data: debit,
+
+                    backgroundColor: "#dc2626",
+
+                    borderRadius: 8
 
                 }
 
@@ -1216,14 +1221,33 @@ function buildPieChart() {
 
             responsive: true,
 
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    position: "bottom"
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true
+
+                }
+
+            }
 
         }
 
     });
 
 }
-
 /* ==========================================================
    OVERRIDE updateDashboard
 ========================================================== */

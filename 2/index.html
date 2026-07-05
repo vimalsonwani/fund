@@ -95,11 +95,10 @@ Export CSV
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
 
-<div class="card">
+<div class="card hover:shadow-xl transition-all duration-300">
 
 <p>Total Credit</p>
-
-<h2 id="totalCredit">
+<h2 id="totalCredit" class="text-4xl font-bold text-green-600">
 
 ₹0
 
@@ -107,23 +106,21 @@ Export CSV
 
 </div>
 
-<div class="card">
+<div class="card hover:shadow-xl transition-all duration-300">
 
 <p>Total Debit</p>
 
-<h2 id="totalDebit">
-
+<h2 id="totalDebit" class="text-4xl font-bold text-red-600">
 ₹0
 
 </h2>
 
 </div>
 
-<div class="card">
+<div class="card hover:shadow-xl transition-all duration-300">
 
 <p>Fund Balance</p>
-
-<h2 id="balance">
+<h2 id="balance" class="text-4xl font-bold text-blue-600">
 
 ₹0
 
@@ -131,7 +128,7 @@ Export CSV
 
 </div>
 
-<div class="card">
+<div class="card hover:shadow-xl transition-all duration-300">
 
 <p>Collection</p>
 
@@ -181,8 +178,9 @@ class="border rounded-xl px-4 py-2 mt-4 md:mt-0">
 
 <div class="summaryCard">
 
-<p>Credit</p>
-
+<span class="badge bg-green-100 text-green-700">
+▲ Credit
+</span>
 <h3 id="monthCredit">
 
 ₹0
@@ -193,8 +191,9 @@ class="border rounded-xl px-4 py-2 mt-4 md:mt-0">
 
 <div class="summaryCard">
 
-<p>Debit</p>
-
+<span class="badge bg-red-100 text-red-700">
+▼ Debit
+</span>
 <h3 id="monthDebit">
 
 ₹0
@@ -271,7 +270,7 @@ style="width:0%">
 
 <div class="grid lg:grid-cols-2 gap-6 mb-8">
 
-<div class="card">
+<div class="card hover:shadow-xl transition-all duration-300">
 
 <h2 class="sectionTitle">
 
@@ -287,7 +286,7 @@ id="collectionChart">
 
 </div>
 
-<div class="card">
+<div class="card hover:shadow-xl transition-all duration-300">
 
 <h2 class="sectionTitle">
 
@@ -309,7 +308,7 @@ id="pieChart">
 
 <div class="grid lg:grid-cols-2 gap-6 mb-8">
 
-<div class="card">
+<div class="card hover:shadow-xl transition-all duration-300">
 
 <div class="flex justify-between items-center mb-4">
 
@@ -365,7 +364,7 @@ class="flex flex-wrap gap-2">
 
 </div>
 
-<div class="card">
+<div class="card hover:shadow-xl transition-all duration-300">
 
 <h2 class="sectionTitle text-red-600">
 
@@ -458,12 +457,7 @@ class="w-full border rounded-xl p-3">
 <th>Name</th>
 
 <th>Type</th>
-
-<th>Amount</th>
-
-<th>Remarks</th>
-
-<th>Source</th>
+<th class="text-right">Amount</th>
 
 </tr>
 
@@ -531,13 +525,13 @@ class="mt-10 text-center text-sm text-gray-500">
 
 <p>
 
-Staff Club Fund Dashboard
+Made with ❤️  KV3
 
 </p>
 
 <p>
 
-Powered by Google Sheets + Apps Script
+Powered by Cold Dink + Fun
 
 </p>
 
